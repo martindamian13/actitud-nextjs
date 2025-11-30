@@ -1,36 +1,158 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Actitud - Edificio Corporativo
 
-## Getting Started
+Modern, scalable corporate landing page built with **Next.js 14**, **TypeScript**, **Tailwind CSS**, and **Nodemailer** for SMTP email functionality.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- ⚡ **Next.js 14** with App Router for optimal performance
+- 🎨 **Tailwind CSS** for maintainable, utility-first styling
+- 📧 **SMTP Email Integration** with Nodemailer for corporate email
+- ✨ **Framer Motion** for smooth animations
+- 📱 **Fully Responsive** design (mobile, tablet, desktop)
+- 🎯 **TypeScript** for type safety
+- 🔒 **Form Validation** with React Hook Form
+- 🖼️ **Image Optimization** with Next.js Image component
+- 🎭 **SEO Optimized** with metadata configuration
+
+## 📋 Prerequisites
+
+- Node.js 18+ and npm
+- SMTP server credentials (Gmail, Office 365, or custom domain)
+
+## 🛠️ Installation
+
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Configure environment variables:**
+   ```bash
+   cp .env.example .env.local
+   ```
+
+3. **Edit `.env.local` with your SMTP credentials:**
+   ```env
+   SMTP_HOST=smtp.gmail.com
+   SMTP_PORT=587
+   SMTP_SECURE=false
+   SMTP_USER=your-email@gmail.com
+   SMTP_PASS=your-app-password
+   SMTP_FROM_EMAIL=noreply@yourdomain.com
+   SMTP_FROM_NAME=Actitud - Edificio Corporativo
+   SMTP_TO_EMAIL=info@yourdomain.com
+   ```
+
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser:**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📧 SMTP Email Configuration
+
+The contact form uses Nodemailer with SMTP to send emails. Configure your SMTP server credentials.
+
+### Gmail Setup (Recommended for Testing)
+
+1. **Enable 2-Factor Authentication** on your Google Account
+2. **Generate an App Password:**
+   - Go to [Google Account Settings](https://myaccount.google.com/)
+   - Security → 2-Step Verification → App Passwords
+   - Select "Mail" and "Other (Custom name)"
+   - Copy the generated password
+
+3. **Configure `.env.local`:**
+   ```env
+   SMTP_HOST=smtp.gmail.com
+   SMTP_PORT=587
+   SMTP_SECURE=false
+   SMTP_USER=youremail@gmail.com
+   SMTP_PASS=your-app-password
+   SMTP_FROM_EMAIL=noreply@yourdomain.com
+   SMTP_TO_EMAIL=youremail@gmail.com
+   ```
+
+### Corporate Domain Setup (Production)
+
+```env
+SMTP_HOST=mail.yourdomain.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=info@yourdomain.com
+SMTP_PASS=your-password
+SMTP_FROM_EMAIL=noreply@yourdomain.com
+SMTP_TO_EMAIL=info@yourdomain.com
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🏗️ Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+actitud-nextjs/
+├── app/
+│   ├── api/send-email/route.ts   # SMTP email API
+│   ├── globals.css               # Global styles
+│   ├── layout.tsx                # Root layout
+│   └── page.tsx                  # Main page
+├── components/
+│   ├── Navigation.tsx
+│   ├── Hero.tsx
+│   ├── About.tsx
+│   ├── Amenities.tsx
+│   ├── Location.tsx
+│   ├── FloorPlans.tsx
+│   ├── FeaturedAmenities.tsx
+│   ├── Gallery.tsx
+│   ├── Contact.tsx
+│   └── Footer.tsx
+├── .env.example                  # Environment template
+└── tailwind.config.ts            # Tailwind config
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎨 Customization
 
-## Learn More
+### Colors
+Edit `tailwind.config.ts` to modify the color palette.
 
-To learn more about Next.js, take a look at the following resources:
+### Content
+Update component files to change text and images.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Vercel (Recommended)
+1. Push to GitHub
+2. Import in [Vercel](https://vercel.com)
+3. Add environment variables
+4. Deploy!
 
-## Deploy on Vercel
+## 📦 Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run dev          # Development server
+npm run build        # Build for production
+npm run start        # Production server
+npm run lint         # Run linter
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧪 Testing Email
+
+1. Configure `.env.local`
+2. Run `npm run dev`
+3. Submit contact form
+4. Check inbox for confirmation
+
+## 📖 Tech Stack
+
+- Next.js 14, TypeScript, Tailwind CSS
+- Framer Motion, React Hook Form
+- Nodemailer for SMTP
+
+## 📝 License
+
+Copyright © 2024 Actitud Edificio Corporativo
+
+---
+
+**Built with Actitud and Vision** ✓
