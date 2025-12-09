@@ -9,25 +9,27 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary-dark-blue': '#0A1A2F',
-        'primary-blue': '#1F3A5A',
+        // Brand colors from manual
+        'primary-blue': '#2F80ED', // Azul Luque
+        'primary-dark-blue': '#1a4d8f', // Darker variation for contrast
+        'accent-green': '#27AE60', // Verde Chaco
+        'accent-orange': '#E67E22', // Terracota claro
+        'light-gray': '#ECF0F1', // Gris claro
+        // Supporting colors
         'soft-steel-blue': '#3F5873',
         'dark-gray': '#4A4F57',
         'medium-gray': '#8C9097',
-        'light-gray': '#E6E8EB',
         'warm-beige': '#D6CBB8',
         'deep-blue-black': '#0A0F14',
-        'accent-green': '#3CD278',
-        'accent-blue': '#4A9FF5',
-        'accent-orange': '#FF9C52',
+        'accent-blue': '#2F80ED', // Same as primary
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'Arial', 'sans-serif'],
+        sans: ['Poppins', 'system-ui', 'Arial', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-beige': 'linear-gradient(135deg, #D6CBB8 0%, #E8DED0 100%)',
-        'gradient-blue': 'linear-gradient(135deg, #1F3A5A 0%, #0A1A2F 100%)',
-        'gradient-dark': 'linear-gradient(135deg, #0A1A2F 0%, #0A0F14 100%)',
+        'gradient-blue': 'linear-gradient(135deg, #2F80ED 0%, #1a4d8f 100%)', // Using brand Azul Luque
+        'gradient-dark': 'linear-gradient(135deg, #1a4d8f 0%, #0A0F14 100%)',
       },
       animation: {
         'fade-in-up': 'fadeInUp 0.6s ease-out',

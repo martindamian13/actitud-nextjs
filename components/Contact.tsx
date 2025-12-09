@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Image from 'next/image';
 
 type FormData = {
   nombre: string;
@@ -58,11 +59,14 @@ export default function Contact() {
           ACTITUD Y VISIÓN.
         </h2>
 
-        <div className="text-center mb-12">
-          <div className="text-4xl font-black text-deep-blue-black inline-block">
-            Actitud
-            <span className="ml-2 text-accent-green">✓</span>
-          </div>
+        <div className="text-center mb-12 flex justify-center">
+          <Image
+            src="/logo-actitud-black.png"
+            alt="Actitud"
+            width={300}
+            height={90}
+            className="h-16 w-auto md:h-20"
+          />
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-8 lg:p-12 rounded shadow-2xl">

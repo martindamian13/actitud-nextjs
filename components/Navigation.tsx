@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -33,11 +34,15 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="text-2xl font-black text-deep-blue-black">
-              Actitud
-              <span className="inline-block ml-2 text-accent-green">✓</span>
-            </div>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo-actitud.png"
+              alt="Actitud"
+              width={200}
+              height={60}
+              priority
+              className="h-12 w-auto md:h-14"
+            />
           </Link>
 
           {/* Desktop Navigation */}
