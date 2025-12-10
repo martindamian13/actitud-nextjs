@@ -24,16 +24,18 @@ export default function Location() {
         <h2 className="text-center mb-16 text-white">UBICACIÓN ESTRATÉGICA</h2>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Map Placeholder */}
-          <div className="bg-white/10 rounded h-[500px] flex items-center justify-center backdrop-blur-sm">
-            <div className="text-center px-6">
-              <div className="flex justify-center mb-4">
-                <MapPinIcon className="w-20 h-20" />
-              </div>
-              <p className="text-2xl font-bold mb-2">Actitud</p>
-              <p className="text-sm opacity-90 leading-relaxed">General Abdón Caballero esquina<br />Orlando Salerno Netto</p>
-              <p className="text-sm opacity-75 mt-1">Campo Grande, Luque</p>
-            </div>
+          {/* Google Maps */}
+          <div className="rounded overflow-hidden h-[500px] shadow-xl">
+            <iframe
+              src="https://www.google.com/maps?q=General+Abdón+Caballero+esquina+Orlando+Salerno+Netto,+Campo+Grande,+Luque,+Paraguay&output=embed&z=16"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Ubicación Actitud - General Abdón Caballero esquina Orlando Salerno Netto, Campo Grande, Luque"
+            />
           </div>
 
           {/* Location Info */}
