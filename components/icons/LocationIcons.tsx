@@ -21,19 +21,13 @@ export const AirportIcon = ({ className = "w-12 h-12" }: IconProps) => (
 );
 
 export const ParkIcon = ({ className = "w-12 h-12" }: IconProps) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    {/* Tree 1 */}
-    <circle cx="8" cy="7" r="3" fill="currentColor" opacity="0.7"/>
-    <path d="M8 10V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-
-    {/* Tree 2 */}
-    <circle cx="16" cy="6" r="3.5" fill="currentColor" opacity="0.7"/>
-    <path d="M16 9.5V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-
-    {/* Bench */}
-    <path d="M4 16H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-    <path d="M6 16V19M18 16V19" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-    <path d="M4 19H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+  <svg className={className} viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M484.058,430.039v-58.42h-71.14h-71.122v58.42l-27.95,12.711v20.317h99.072H512V442.75L484.058,430.039z M458.646,430.039h-45.728h-45.719v-22.864h45.719h45.728V430.039z"/>
+    <rect x="322.966" y="473.23" width="22.864" height="38.104"/>
+    <rect x="480.014" y="473.23" width="22.864" height="38.104"/>
+    <rect x="442.056" y="473.23" width="22.874" height="20.943"/>
+    <rect x="360.915" y="473.23" width="22.865" height="20.943"/>
+    <path d="M354.459,327.146c37.371-14.16,63.989-50.178,63.989-92.51c0-26.84-10.722-51.143-28.066-68.969 c0.628-4.69,1.072-9.42,1.072-14.274c0-54-40.527-98.474-92.808-104.864C272.364,18.377,235.032,0.666,193.473,0.666 c-79.518,0-143.981,64.461-143.981,143.98c0,0.425,0.058,0.83,0.058,1.245C19.66,166.111,0,200.325,0,239.134 c0,53.209,36.984,97.682,86.621,109.38c10.067,24.62,34.215,41.993,62.465,41.993c10.529,0,20.451-2.481,29.33-6.776v127.602 h77.327v-83.775l30.161-51.52C316.77,373.791,342.848,354.333,354.459,327.146z M213.828,341.999 c0.647,0.926,1.342,1.824,2.037,2.722l-3.426,1.39C212.93,344.749,213.412,343.389,213.828,341.999z M238.024,405.014v-40.47 c7.162,4.344,15.037,7.625,23.434,9.585L238.024,405.014z"/>
   </svg>
 );
 
