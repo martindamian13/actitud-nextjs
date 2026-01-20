@@ -29,10 +29,10 @@ export default function FloorPlans() {
         </p>
 
         {/* Tabs */}
-        <div className="flex justify-center gap-6 mb-12">
+        <div className="flex justify-center gap-3 md:gap-6 mb-12">
           <button
             onClick={() => setActiveTab('norte')}
-            className={`px-12 py-4 text-lg font-semibold rounded transition-all ${
+            className={`px-6 md:px-12 py-3 md:py-4 text-base md:text-lg font-semibold rounded transition-all ${
               activeTab === 'norte'
                 ? 'bg-accent-green text-white'
                 : 'bg-white border-2 border-light-gray text-dark-gray hover:border-accent-green'
@@ -42,7 +42,7 @@ export default function FloorPlans() {
           </button>
           <button
             onClick={() => setActiveTab('sur')}
-            className={`px-12 py-4 text-lg font-semibold rounded transition-all ${
+            className={`px-6 md:px-12 py-3 md:py-4 text-base md:text-lg font-semibold rounded transition-all ${
               activeTab === 'sur'
                 ? 'bg-accent-blue text-white'
                 : 'bg-white border-2 border-light-gray text-dark-gray hover:border-accent-blue'
@@ -53,11 +53,11 @@ export default function FloorPlans() {
         </div>
 
         {/* Content */}
-        <div className="grid lg:grid-cols-3 gap-12">
+        <div className="grid lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
           {/* Floor Plan Visual */}
-          <div className="lg:col-span-2 bg-light-gray p-12 rounded">
+          <div className="lg:col-span-2 bg-light-gray p-6 md:p-8 lg:p-12 rounded">
             <div
-              className={`bg-white h-[500px] rounded flex items-center justify-center relative border-4 ${
+              className={`bg-white h-[300px] md:h-[400px] lg:h-[500px] rounded flex items-center justify-center relative border-4 ${
                 activeTab === 'norte' ? 'border-accent-green' : 'border-accent-blue'
               }`}
               style={{

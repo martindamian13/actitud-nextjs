@@ -29,23 +29,23 @@ export default function FeaturedAmenities() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <h2 className="text-center mb-20 text-white">AMENITIES 100% EQUIPADOS</h2>
 
-        <div className="space-y-24">
+        <div className="space-y-12 md:space-y-16 lg:space-y-24">
           {amenities.map((amenity, index) => (
             <div
               key={amenity.title}
-              className={`grid lg:grid-cols-2 gap-12 items-center ${
+              className={`grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center ${
                 index % 2 === 1 ? 'lg:flex-row-reverse' : ''
               }`}
             >
               <div
-                className={`h-[500px] bg-cover bg-center rounded shadow-2xl ${
+                className={`h-[250px] md:h-[350px] lg:h-[500px] bg-cover bg-center rounded shadow-2xl ${
                   index % 2 === 1 ? 'lg:order-2' : ''
                 }`}
                 style={{ backgroundImage: `url('${amenity.image}')` }}
               />
-              <div className={`bg-white/10 backdrop-blur-sm p-12 rounded ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                <h3 className="text-3xl font-black mb-6">{amenity.title}</h3>
-                <p className="text-lg leading-relaxed opacity-90">{amenity.description}</p>
+              <div className={`bg-white/10 backdrop-blur-sm p-6 md:p-8 lg:p-12 rounded ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                <h3 className="font-black mb-4 md:mb-6">{amenity.title}</h3>
+                <p className="text-base md:text-lg leading-relaxed opacity-90">{amenity.description}</p>
               </div>
             </div>
           ))}

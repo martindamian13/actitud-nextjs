@@ -37,7 +37,7 @@ export default function Amenities() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <h2 className="text-center mb-16">AMENITIES ÚNICAS EN EL MERCADO CORPORATIVO</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
           {amenities.map((amenity, index) => {
             const Icon = amenity.Icon;
             return (
@@ -47,12 +47,12 @@ export default function Amenities() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
                 viewport={{ once: true }}
-                className="bg-white p-8 rounded text-center hover:shadow-xl transition-shadow duration-300"
+                className="bg-white p-6 md:p-8 rounded text-center hover:shadow-xl transition-shadow duration-300"
               >
                 <div className="flex justify-center mb-4 text-primary-blue">
-                  <Icon className="w-14 h-14" />
+                  <Icon className="w-16 h-16" />
                 </div>
-                <h3 className="text-lg font-semibold text-dark-gray">{amenity.title}</h3>
+                <h3 className="text-base md:text-lg font-semibold text-dark-gray">{amenity.title}</h3>
               </motion.div>
             );
           })}
