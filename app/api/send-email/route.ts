@@ -1,17 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { encode } from 'html-entities';
+import { contactFormSchema } from '@/lib/validations';
+import { ZodError } from 'zod';
 
 export async function POST(request: NextRequest) {
   try {
-    const { nombre, email, telefono, empresa, mensaje } = await request.json();
+    const body = await request.json();
 
-    // Validate required fields
-    if (!nombre || !email || !telefono || !mensaje) {
-      return NextResponse.json(
-        { error: 'Todos los campos son requeridos' },
-        { status: 400 }
-      );
-    }
+    // Validate with Zod schema
+    const validatedData = contactFormSchema.parse(body);
+    const { nombre, email, telefono, empresa, mensaje } = validatedData;
+
+    // Sanitize all inputs to prevent XSS
+    const sanitizedNombre = encode(nombre);
+    const sanitizedEmail = encode(email);
+    const sanitizedTelefono = encode(telefono);
+    const sanitizedEmpresa = empresa ? encode(empresa) : '';
+    const sanitizedMensaje = encode(mensaje);
 
     // Create transporter with SMTP configuration
     const transporter = nodemailer.createTransport({
@@ -29,7 +35,7 @@ export async function POST(request: NextRequest) {
       from: `"${process.env.SMTP_FROM_NAME || 'Actitud Web'}" <${process.env.SMTP_FROM_EMAIL}>`,
       to: process.env.SMTP_TO_EMAIL,
       replyTo: email,
-      subject: `Nueva consulta de ${nombre} - Actitud Edificio Corporativo`,
+      subject: `Nueva consulta de ${sanitizedNombre} - Actitud Edificio Corporativo`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: linear-gradient(135deg, #1F3A5A 0%, #0A1A2F 100%); padding: 40px; text-align: center;">
@@ -42,14 +48,14 @@ export async function POST(request: NextRequest) {
             <h2 style="color: #0A1A2F; margin-top: 0;">Nueva Consulta desde el Sitio Web</h2>
 
             <div style="background: white; padding: 30px; border-radius: 8px; margin-top: 20px;">
-              <p style="margin: 10px 0;"><strong style="color: #1F3A5A;">Nombre:</strong> ${nombre}</p>
-              <p style="margin: 10px 0;"><strong style="color: #1F3A5A;">Email:</strong> ${email}</p>
-              <p style="margin: 10px 0;"><strong style="color: #1F3A5A;">Teléfono:</strong> ${telefono}</p>
-              ${empresa ? `<p style="margin: 10px 0;"><strong style="color: #1F3A5A;">Empresa:</strong> ${empresa}</p>` : ''}
+              <p style="margin: 10px 0;"><strong style="color: #1F3A5A;">Nombre:</strong> ${sanitizedNombre}</p>
+              <p style="margin: 10px 0;"><strong style="color: #1F3A5A;">Email:</strong> ${sanitizedEmail}</p>
+              <p style="margin: 10px 0;"><strong style="color: #1F3A5A;">Teléfono:</strong> ${sanitizedTelefono}</p>
+              ${sanitizedEmpresa ? `<p style="margin: 10px 0;"><strong style="color: #1F3A5A;">Empresa:</strong> ${sanitizedEmpresa}</p>` : ''}
 
               <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #E6E8EB;">
                 <strong style="color: #1F3A5A;">Mensaje:</strong>
-                <p style="margin: 10px 0; line-height: 1.6;">${mensaje}</p>
+                <p style="margin: 10px 0; line-height: 1.6; white-space: pre-wrap;">${sanitizedMensaje}</p>
               </div>
             </div>
           </div>
@@ -77,7 +83,7 @@ export async function POST(request: NextRequest) {
           </div>
 
           <div style="background: #f5f5f5; padding: 40px;">
-            <h2 style="color: #0A1A2F;">¡Gracias por tu interés, ${nombre}!</h2>
+            <h2 style="color: #0A1A2F;">¡Gracias por tu interés, ${sanitizedNombre}!</h2>
 
             <div style="background: white; padding: 30px; border-radius: 8px; margin-top: 20px;">
               <p style="line-height: 1.8; color: #4A4F57;">
@@ -123,8 +129,26 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Error sending email:', error);
+
+    // Handle Zod validation errors
+    if (error instanceof ZodError) {
+      const fieldErrors = error.issues.map(err => ({
+        field: err.path.join('.'),
+        message: err.message,
+      }));
+
+      return NextResponse.json(
+        {
+          error: 'Datos inválidos',
+          details: fieldErrors
+        },
+        { status: 400 }
+      );
+    }
+
+    // Handle other errors
     return NextResponse.json(
-      { error: 'Error al enviar el email' },
+      { error: 'Error al enviar el email. Por favor intenta nuevamente.' },
       { status: 500 }
     );
   }
