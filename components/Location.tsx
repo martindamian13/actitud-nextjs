@@ -8,14 +8,15 @@ import {
   SoccerIcon,
   MapPinIcon,
 } from '@/components/icons/LocationIcons';
+import LazyIframe from '@/components/LazyIframe';
 
 export default function Location() {
   const locations = [
-    { name: 'Eje corporativo', time: '10 minutos', Icon: CorporateIcon },
-    { name: 'Aeropuerto', time: '10 minutos', Icon: AirportIcon },
-    { name: 'Ñu Guazú', time: '3 minutos', Icon: ParkIcon },
-    { name: 'CIT', time: '3 minutos', Icon: SportsIcon },
-    { name: 'Conmebol', time: '8 minutos', Icon: SoccerIcon },
+    { name: 'Eje corporativo', time: '10 minutos', article: 'del', Icon: CorporateIcon },
+    { name: 'Aeropuerto', time: '10 minutos', article: 'del', Icon: AirportIcon },
+    { name: 'Ñu Guazú', time: '3 minutos', article: 'del', Icon: ParkIcon },
+    { name: 'CIT', time: '3 minutos', article: 'del', Icon: SportsIcon },
+    { name: 'Conmebol', time: '8 minutos', article: 'de la', Icon: SoccerIcon },
   ];
 
   return (
@@ -25,30 +26,27 @@ export default function Location() {
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Google Maps */}
-          <div className="rounded overflow-hidden h-[500px] shadow-xl">
-            <iframe
+          <div className="rounded overflow-hidden shadow-xl">
+            <LazyIframe
               src="https://www.google.com/maps?q=General+Abdón+Caballero+esquina+Orlando+Salerno+Netto,+Campo+Grande,+Luque,+Paraguay&output=embed&z=16"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
               title="Ubicación Actitud - General Abdón Caballero esquina Orlando Salerno Netto, Campo Grande, Luque"
+              height="500px"
+              allowFullScreen={true}
+              className="h-[500px]"
             />
           </div>
 
           {/* Location Info */}
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {locations.map((location) => {
               const Icon = location.Icon;
               return (
                 <div key={location.name} className="text-center">
                   <div className="flex justify-center mb-4">
-                    <Icon className="w-16 h-16" />
+                    <Icon className="w-16 h-16 md:w-20 md:h-20" />
                   </div>
-                  <p className="text-sm opacity-90">A {location.time} del</p>
-                  <p className="text-xl font-bold mt-1">{location.name}</p>
+                  <p className="text-base md:text-sm opacity-90">A {location.time} {location.article}</p>
+                  <p className="text-xl md:text-2xl font-bold mt-1">{location.name}</p>
                 </div>
               );
             })}
