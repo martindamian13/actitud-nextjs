@@ -10,14 +10,58 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Actitud - Edificio Corporativo",
-  description: "Edificio corporativo moderno. Donde la productividad y el bienestar se encuentran. Oficinas de planta libre, amenities exclusivas, ubicación estratégica.",
-  keywords: ["edificio corporativo", "oficinas", "planta libre", "coworking", "amenities"],
+  metadataBase: new URL('https://edificioactitud.com.py'),
+  title: {
+    default: "Actitud - Edificio Corporativo en Luque, Paraguay",
+    template: "%s | Actitud Edificio Corporativo",
+  },
+  description: "Edificio corporativo moderno en Luque, Paraguay. Oficinas de planta libre desde 170m², amenities exclusivos, coworking, sala de conferencias y rooftop. A minutos del aeropuerto y Conmebol.",
+  keywords: [
+    "edificio corporativo",
+    "oficinas en luque",
+    "oficinas paraguay",
+    "alquiler oficinas",
+    "planta libre",
+    "coworking luque",
+    "amenities",
+    "sala de conferencias",
+    "campo grande luque",
+    "oficinas cerca aeropuerto",
+  ],
   authors: [{ name: "Actitud" }],
+  creator: "Actitud",
+  publisher: "Actitud",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    title: "Actitud - Edificio Corporativo",
-    description: "Donde la productividad y el bienestar se encuentran",
+    title: "Actitud - Edificio Corporativo en Luque",
+    description: "Donde la productividad y el bienestar se encuentran. Oficinas de planta libre, amenities exclusivos, ubicación estratégica.",
+    url: "https://edificioactitud.com.py",
+    siteName: "Actitud Edificio Corporativo",
+    locale: "es_PY",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Actitud - Edificio Corporativo",
+    description: "Oficinas de planta libre en Luque, Paraguay. Amenities exclusivos y ubicación estratégica.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'x3zi7h1P5r1bZ8edDWutlUAyCkbZF9WzYPFFmL3sLP8',
   },
 };
 
