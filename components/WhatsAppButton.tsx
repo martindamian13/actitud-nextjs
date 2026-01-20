@@ -1,9 +1,14 @@
 'use client';
 
+const WHATSAPP_NUMBER = '595973229057';
+const WHATSAPP_MESSAGE = 'Hola, me gustaría recibir información sobre Actitud Edificio Corporativo';
+
 export default function WhatsAppButton() {
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+
   return (
     <a
-      href="https://wa.me/595973229057"
+      href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 bg-accent-green hover:bg-[#20924d] text-white rounded-full p-4 shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center group"
@@ -23,9 +28,6 @@ export default function WhatsAppButton() {
       <span className="absolute right-full mr-3 bg-white text-primary-blue px-4 py-2 rounded-lg shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-semibold">
         ¿Necesitas ayuda? Chateá con nosotros
       </span>
-
-      {/* Pulse animation */}
-      <span className="absolute inset-0 rounded-full bg-accent-green animate-ping opacity-75"></span>
     </a>
   );
 }
