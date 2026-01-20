@@ -73,7 +73,7 @@ export default function StickyContactButton() {
       {/* Mobile Button - Bottom, slightly above WhatsApp */}
       <button
         onClick={scrollToContact}
-        className={`md:hidden fixed bottom-24 left-6 z-40 bg-primary-blue text-white px-6 py-3 rounded-full shadow-2xl hover:bg-primary-dark-blue transition-all duration-300 flex items-center gap-2 group ${
+        className={`md:hidden fixed bottom-6 left-6 z-40 bg-primary-blue text-white px-6 py-3 rounded-full shadow-2xl hover:bg-primary-dark-blue transition-all duration-300 flex items-center gap-2 group ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0 pointer-events-none'
         }`}
         aria-label="Ir al formulario de contacto"
