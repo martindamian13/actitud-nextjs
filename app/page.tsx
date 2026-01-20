@@ -9,6 +9,7 @@ import Gallery from '@/components/Gallery';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import StickyContactButton from '@/components/StickyContactButton';
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <Contact />
       <Footer />
       <WhatsAppButton />
+      <StickyContactButton />
     </main>
   );
 }
