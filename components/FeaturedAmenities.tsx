@@ -44,7 +44,7 @@ export default function FeaturedAmenities() {
                 style={{ backgroundImage: `url('${amenity.image}')` }}
               />
               <div className={`bg-white/10 backdrop-blur-sm p-6 md:p-8 lg:p-12 rounded ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                <h3 className="font-black mb-4 md:mb-6">{amenity.title}</h3>
+                <h3 className="font-black mb-4 md:mb-6 text-white">{amenity.title}</h3>
                 <p className="text-base md:text-lg leading-relaxed opacity-90">{amenity.description}</p>
               </div>
             </div>
