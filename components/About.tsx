@@ -1,16 +1,19 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 export default function About() {
+  const prefersReducedMotion = usePrefersReducedMotion();
+
   return (
     <section id="edificio" className="py-24 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.8 }}
             viewport={{ once: true }}
           >
             <h2 className="mb-8">
@@ -31,11 +34,11 @@ export default function About() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={prefersReducedMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.8, delay: prefersReducedMotion ? 0 : 0.2 }}
             viewport={{ once: true }}
-            className="h-[600px] rounded bg-cover bg-center shadow-2xl"
+            className="h-[300px] md:h-[400px] lg:h-[600px] rounded bg-cover bg-center shadow-2xl"
             style={{
               backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80')"
             }}
