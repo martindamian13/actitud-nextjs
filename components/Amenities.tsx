@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import {
   MeetingRoomIcon,
   ConferenceIcon,
@@ -19,44 +20,46 @@ import {
 const amenities = [
   { title: 'Sala de reuniones', Icon: MeetingRoomIcon },
   { title: 'Sala de conferencias', Icon: ConferenceIcon },
-  { title: 'Espacios comunes climatizados', Icon: ClimateControlIcon },
-  { title: 'Conexiones para A/C tipo Casette', Icon: PowerPlugIcon },
+  { title: 'Espacios climatizados', Icon: ClimateControlIcon },
+  { title: 'A/C tipo Casette', Icon: PowerPlugIcon },
   { title: 'Ascensor de alta velocidad', Icon: ElevatorIcon },
   { title: 'Terraza', Icon: TerraceIcon },
   { title: 'Transformador propio', Icon: TransformerIcon },
   { title: 'Estacionamiento asignado', Icon: ParkingIcon },
-  { title: 'CCTV en espacios comunes', Icon: CCTVIcon },
+  { title: 'CCTV', Icon: CCTVIcon },
   { title: 'WiFi en espacios comunes', Icon: WiFiIcon },
   { title: 'Generador propio', Icon: GeneratorIcon },
-  { title: 'Sanitarios con accesibilidad', Icon: AccessibilityIcon },
+  { title: 'Sanitarios accesibles', Icon: AccessibilityIcon },
 ];
 
 export default function Amenities() {
-  return (
-    <section id="amenities" className="py-24 lg:py-32 bg-light-gray">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <h2 className="text-center mb-16">AMENITIES ÚNICAS EN EL MERCADO CORPORATIVO</h2>
+  const prefersReducedMotion = usePrefersReducedMotion();
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
-          {amenities.map((amenity, index) => {
-            const Icon = amenity.Icon;
-            return (
-              <motion.div
-                key={amenity.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                viewport={{ once: true }}
-                className="bg-white p-6 md:p-8 rounded text-center hover:shadow-xl transition-shadow duration-300"
-              >
-                <div className="flex justify-center mb-4 text-primary-blue">
-                  <Icon className="w-16 h-16" />
+  return (
+    <section id="amenities" className="py-16 lg:py-20 bg-white border-t border-light-gray">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+        <motion.div
+          initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-center text-xl md:text-2xl font-bold text-dark-gray mb-8">
+            Amenities incluidos
+          </h3>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-4">
+            {amenities.map((amenity) => {
+              const Icon = amenity.Icon;
+              return (
+                <div key={amenity.title} className="flex items-center gap-3">
+                  <Icon className="w-5 h-5 text-accent-green flex-shrink-0" />
+                  <span className="text-sm text-dark-gray">{amenity.title}</span>
                 </div>
-                <h3 className="text-base md:text-lg font-semibold text-dark-gray">{amenity.title}</h3>
-              </motion.div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
