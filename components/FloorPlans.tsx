@@ -73,14 +73,14 @@ export default function FloorPlans() {
 
   return (
     <section id="plantas" className="py-24 lg:py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto md:px-6 lg:px-8">
         {/* Hero Image + Copy */}
         <motion.div
           initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-12 px-6 md:px-0"
         >
           <h2 className="mb-4">IMAGINÁ LAS POSIBILIDADES<br />DE TU OFICINA</h2>
           <p className="text-lg text-dark-gray max-w-2xl mx-auto">
@@ -94,10 +94,10 @@ export default function FloorPlans() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
-          className="bg-white p-3 md:p-5 rounded-xl shadow-lg"
+          className="md:bg-white md:p-5 md:rounded-xl md:shadow-lg"
         >
           {/* Image */}
-          <div className="relative h-[220px] sm:h-[280px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
+          <div className="relative h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] md:rounded-lg overflow-hidden">
             <Image
               src={currentDistribution.image}
               alt={currentDistribution.name}
@@ -128,7 +128,7 @@ export default function FloorPlans() {
           </div>
 
           {/* Info Bar */}
-          <div className="mt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="mt-4 px-4 md:px-0 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
               <h4 className="text-xl font-bold text-dark-gray">{currentDistribution.name}</h4>
               <p className="text-sm text-medium-gray">{currentDistribution.description}</p>
@@ -162,13 +162,13 @@ export default function FloorPlans() {
           </div>
 
           {/* Disclaimer */}
-          <p className="text-center text-xs text-medium-gray mt-4 italic">
+          <p className="text-center text-xs text-medium-gray mt-4 px-4 md:px-0 italic">
             * Imágenes ilustrativas. Las plantas se entregan libres, sin equipamiento ni divisiones.
           </p>
         </motion.div>
 
         {/* CTA */}
-        <div className="mt-10 text-center">
+        <div className="mt-10 text-center px-6 md:px-0">
           <p className="text-dark-gray mb-4">¿Tenés una idea de distribución?</p>
           <a
             href="#contacto"
