@@ -76,18 +76,18 @@ export default function Hero() {
             transition={{ duration: 0.5 }}
             className="max-w-2xl"
           >
-            <h1 className="font-black leading-none mb-4 text-white whitespace-pre-line">
+            <h1 className="font-black leading-none mb-4 text-white whitespace-pre-line text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
               {slide.title}
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-2 font-light">
+            <p className="text-lg md:text-2xl text-white/90 mb-2 font-light">
               {slide.subtitle}
             </p>
-            <p className="text-base md:text-lg text-white/70 mb-10 font-light">
+            <p className="text-sm md:text-lg text-white/70 mb-8 md:mb-10 font-light">
               {slide.detail}
             </p>
             <a
               href={slide.cta.href}
-              className="inline-block bg-primary-blue text-white px-8 md:px-12 py-4 md:py-5 text-lg font-semibold rounded hover:bg-primary-dark-blue transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+              className="inline-block bg-primary-blue text-white px-6 md:px-10 lg:px-12 py-3 md:py-4 lg:py-5 text-base md:text-lg font-semibold rounded hover:bg-primary-dark-blue transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
             >
               {slide.cta.text}
             </a>
@@ -95,7 +95,7 @@ export default function Hero() {
         </AnimatePresence>
 
         {/* Slide Indicators */}
-        <div className="absolute bottom-10 left-6 lg:left-8 flex gap-3">
+        <div className="absolute bottom-6 md:bottom-10 left-6 lg:left-8 flex gap-3">
           {slides.map((_, index) => (
             <button
               key={index}

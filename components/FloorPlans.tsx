@@ -72,7 +72,7 @@ export default function FloorPlans() {
   const currentDistribution = distributions[currentSlide];
 
   return (
-    <section id="plantas" className="py-24 lg:py-32 bg-light-gray">
+    <section id="plantas" className="py-24 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Hero Image + Copy */}
         <motion.div
@@ -97,7 +97,7 @@ export default function FloorPlans() {
           className="bg-white p-3 md:p-5 rounded-xl shadow-lg"
         >
           {/* Image */}
-          <div className="relative h-[250px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
+          <div className="relative h-[220px] sm:h-[280px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
             <Image
               src={currentDistribution.image}
               alt={currentDistribution.name}
@@ -109,7 +109,7 @@ export default function FloorPlans() {
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 md:p-3 rounded-full shadow-lg transition-all hover:scale-110"
+              className="absolute left-2 md:left-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all hover:scale-110"
               aria-label="Distribución anterior"
             >
               <svg className="w-5 h-5 md:w-6 md:h-6 text-dark-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,7 +118,7 @@ export default function FloorPlans() {
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 md:p-3 rounded-full shadow-lg transition-all hover:scale-110"
+              className="absolute right-2 md:right-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all hover:scale-110"
               aria-label="Siguiente distribución"
             >
               <svg className="w-5 h-5 md:w-6 md:h-6 text-dark-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -46,7 +46,7 @@ export default function About() {
             </p>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-4 md:gap-6">
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
@@ -71,7 +71,7 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: prefersReducedMotion ? 0 : 0.8, delay: prefersReducedMotion ? 0 : 0.2 }}
             viewport={{ once: true }}
-            className="relative h-[350px] md:h-[450px] lg:h-[550px] rounded-lg overflow-hidden shadow-2xl"
+            className="relative h-[280px] md:h-[400px] lg:h-[550px] rounded-lg overflow-hidden shadow-2xl"
           >
             <Image
               src="/images/hero/fachada-frontal.png"

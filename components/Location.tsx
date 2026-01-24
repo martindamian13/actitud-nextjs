@@ -24,7 +24,7 @@ export default function Location() {
   ];
 
   return (
-    <section id="ubicacion" className="py-24 lg:py-32 bg-white">
+    <section id="ubicacion" className="py-24 lg:py-32 bg-light-gray">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -46,19 +46,20 @@ export default function Location() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 mb-10"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 mb-10"
         >
-          {locations.map((location) => {
+          {locations.map((location, index) => {
             const Icon = location.Icon;
+            const isLast = index === locations.length - 1;
             return (
               <div
                 key={location.name}
-                className="bg-gradient-blue rounded-lg p-4 text-white text-center"
+                className={`bg-gradient-blue rounded-lg p-3 md:p-4 text-white text-center ${isLast ? 'col-span-2 md:col-span-1' : ''}`}
               >
                 <div className="flex justify-center mb-2">
                   <Icon className="w-8 h-8 md:w-10 md:h-10" />
                 </div>
-                <p className="text-lg md:text-xl font-bold">{location.time}</p>
+                <p className="text-base md:text-xl font-bold">{location.time}</p>
                 <p className="text-sm font-semibold mt-1">{location.name}</p>
                 <p className="text-xs opacity-75 mt-0.5 hidden md:block">{location.description}</p>
               </div>
@@ -79,7 +80,7 @@ export default function Location() {
             title="Ubicación Actitud - Vista satelital"
             height="450px"
             allowFullScreen={true}
-            className="h-[350px] md:h-[450px]"
+            className="h-[280px] md:h-[400px] lg:h-[450px]"
           />
           {/* Mobile overlay */}
           <a

@@ -26,7 +26,7 @@ export default function Gallery() {
               <div
                 key={index}
                 onClick={() => setSelectedImage(image)}
-                className="relative h-[250px] md:h-[300px] lg:h-[400px] rounded cursor-pointer transform transition-transform duration-300 hover:scale-105 shadow-lg hover:shadow-2xl overflow-hidden"
+                className="relative h-[200px] sm:h-[250px] md:h-[300px] lg:h-[400px] rounded cursor-pointer transform transition-transform duration-300 hover:scale-105 shadow-lg hover:shadow-2xl overflow-hidden"
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
@@ -71,7 +71,7 @@ export default function Gallery() {
           </div>
           <button
             onClick={() => setSelectedImage(null)}
-            className="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 transition-colors p-2 hover:bg-white/10 rounded"
+            className="absolute top-4 right-4 text-white text-3xl md:text-4xl hover:text-gray-300 transition-colors p-3 hover:bg-white/10 rounded-lg"
             aria-label="Cerrar vista ampliada"
           >
             ×

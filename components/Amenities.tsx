@@ -36,7 +36,7 @@ export default function Amenities() {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   return (
-    <section id="amenities" className="py-16 lg:py-20 bg-white border-t border-light-gray">
+    <section id="amenities" className="py-16 lg:py-20 bg-light-gray">
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
@@ -48,7 +48,7 @@ export default function Amenities() {
             Amenities incluidos
           </h3>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-3 md:gap-y-4">
             {amenities.map((amenity) => {
               const Icon = amenity.Icon;
               return (

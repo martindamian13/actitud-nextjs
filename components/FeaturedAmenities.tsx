@@ -31,7 +31,7 @@ export default function FeaturedAmenities() {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   return (
-    <section className="py-20 lg:py-28 bg-light-gray">
+    <section className="py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.h2
           initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
@@ -51,7 +51,7 @@ export default function FeaturedAmenities() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }}
               viewport={{ once: true }}
-              className="relative h-[220px] md:h-[280px] lg:h-[320px] rounded-xl overflow-hidden group cursor-default"
+              className="relative h-[200px] sm:h-[240px] md:h-[280px] lg:h-[320px] rounded-xl overflow-hidden group cursor-default"
             >
               <Image
                 src={amenity.image}
@@ -63,7 +63,7 @@ export default function FeaturedAmenities() {
               {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
               {/* Text */}
-              <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
+              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5 lg:p-6">
                 <h3 className="text-xl md:text-2xl font-bold text-white">{amenity.title}</h3>
                 <p className="text-sm text-white/80 mt-1">{amenity.subtitle}</p>
               </div>
