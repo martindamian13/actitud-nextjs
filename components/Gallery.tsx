@@ -4,12 +4,12 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 const images = [
-  { url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80', alt: 'Lobby' },
-  { url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80', alt: 'Oficina' },
-  { url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80', alt: 'Terraza' },
-  { url: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80', alt: 'Coworking' },
-  { url: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80', alt: 'Sala de reuniones' },
-  { url: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&q=80', alt: 'Exterior' },
+  { url: '/images/gallery/fachada-aerea.png', alt: 'Edificio Actitud - Vista aérea' },
+  { url: '/images/gallery/palier.png', alt: 'Palier - Lobby de amenities' },
+  { url: '/images/gallery/area-cafe.png', alt: 'Área de café y trabajo' },
+  { url: '/images/gallery/estar-exterior.png', alt: 'Estar exterior - Terraza' },
+  { url: '/images/gallery/quincho.png', alt: 'Quincho - Parrilla' },
+  { url: '/images/gallery/oficina-vista.png', alt: 'Oficina ejecutiva con vista' },
 ];
 
 export default function Gallery() {
