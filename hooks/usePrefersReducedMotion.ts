@@ -1,4 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
+
+const QUERY = '(prefers-reduced-motion: reduce)';
+
+function subscribe(onChange: () => void) {
+  const mediaQuery = window.matchMedia(QUERY);
+  mediaQuery.addEventListener('change', onChange);
+  return () => mediaQuery.removeEventListener('change', onChange);
+}
+
+function getSnapshot() {
+  return window.matchMedia(QUERY).matches;
+}
+
+// On the server there is no media query, assume animations are allowed
+function getServerSnapshot() {
+  return false;
+}
 
 /**
  * Hook para detectar si el usuario prefiere reducir animaciones
@@ -7,32 +24,5 @@ import { useState, useEffect } from 'react';
  * @returns boolean - true si el usuario prefiere reducir animaciones
  */
 export function usePrefersReducedMotion(): boolean {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    // Check if window is defined (client-side)
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    // Set initial value
-    setPrefersReducedMotion(mediaQuery.matches);
-
-    // Create event listener for changes
-    const handleChange = (event: MediaQueryListEvent) => {
-      setPrefersReducedMotion(event.matches);
-    };
-
-    // Add listener
-    mediaQuery.addEventListener('change', handleChange);
-
-    // Cleanup
-    return () => {
-      mediaQuery.removeEventListener('change', handleChange);
-    };
-  }, []);
-
-  return prefersReducedMotion;
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
