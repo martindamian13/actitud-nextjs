@@ -19,7 +19,7 @@ const slides = [
     alt: 'Salones Comerciales - Planta Baja',
     title: 'SALONES\nCOMERCIALES',
     subtitle: 'Espacios en alquiler',
-    detail: 'Farmacia · Laboratorio · Locales comerciales',
+    detail: 'Oficinas planta libre · Locales comerciales',
     cta: { text: 'Consultar disponibilidad', href: '#contacto' },
   },
 ];
