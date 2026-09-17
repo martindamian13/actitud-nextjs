@@ -11,7 +11,7 @@ const slides = [
     alt: 'Edificio Actitud - Fachada',
     title: 'EDIFICIO\nCORPORATIVO',
     subtitle: 'A 10 min del eje corporativo',
-    detail: 'Planta libre desde consultar | 1.573 m²',
+    detail: 'Planta libre | Hasta 190 m² por unidad',
     cta: { text: 'Conocer más', href: '#contacto' },
   },
   {

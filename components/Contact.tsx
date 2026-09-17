@@ -59,7 +59,7 @@ export default function Contact() {
         >
           <h2 className="mb-4">CONTACTANOS</h2>
           <p className="text-lg text-dark-gray max-w-xl mx-auto">
-            Dejanos tus datos y un asesor se comunicará con vos a la brevedad
+            Dejanos tus datos y un asesor se comunicará con usted a la brevedad
           </p>
         </motion.div>
 

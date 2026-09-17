@@ -52,12 +52,12 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/logo-actitud.png"
+              src="/logo-actitud-2026.png"
               alt="Actitud"
-              width={200}
-              height={60}
+              width={524}
+              height={121}
               priority
-              className="h-12 w-auto md:h-14"
+              className="h-8 w-auto md:h-10"
             />
           </Link>
 

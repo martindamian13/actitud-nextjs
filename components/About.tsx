@@ -4,10 +4,9 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
-const stats = [
+const stats: { prefix?: string; number: string; label: string }[] = [
   { number: '6', label: 'Pisos de oficinas' },
-  { number: '175', label: 'm² por planta' },
-  { number: '1.573', label: 'm² totales' },
+  { prefix: 'Hasta', number: '190', label: 'm² por unidad' },
   { number: '1', label: 'Piso de amenities' },
 ];
 
@@ -15,9 +14,9 @@ export default function About() {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   return (
-    <section id="edificio" className="py-24 lg:py-32 bg-white">
+    <section id="edificio" className="py-24 lg:py-32 bg-white overflow-x-clip">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-[2fr_3fr] gap-10 lg:gap-12 items-center">
           {/* Content */}
           <motion.div
             initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -31,9 +30,9 @@ export default function About() {
               <span className="text-sm font-semibold uppercase tracking-wide text-accent-green">En construcción</span>
               <div className="flex items-center gap-2">
                 <div className="w-20 h-1.5 bg-accent-green/20 rounded-full overflow-hidden">
-                  <div className="h-full bg-accent-green rounded-full w-1/4" />
+                  <div className="h-full bg-accent-green rounded-full w-[30%]" />
                 </div>
-                <span className="text-xs font-bold text-accent-green">25%</span>
+                <span className="text-xs font-bold text-accent-green">30%</span>
               </div>
             </div>
 
@@ -46,7 +45,7 @@ export default function About() {
             </p>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-4 md:gap-6">
+            <div className="grid grid-cols-3 gap-3 md:gap-6">
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
@@ -54,9 +53,16 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }}
                   viewport={{ once: true }}
-                  className="border-l-4 border-primary-blue pl-4"
+                  className="border-l-4 border-primary-blue pl-3 md:pl-4 lg:flex lg:flex-col lg:justify-center"
                 >
-                  <span className="text-3xl md:text-4xl font-black text-deep-blue-black">
+                  {/* Below lg the prefix line is reserved on every stat so numbers align; on lg stats are centered vertically */}
+                  <span
+                    className={`block text-sm md:text-base font-semibold text-dark-gray ${stat.prefix ? '' : 'invisible lg:hidden'}`}
+                    aria-hidden={!stat.prefix}
+                  >
+                    {stat.prefix ?? ' '}
+                  </span>
+                  <span className="block text-2xl sm:text-3xl md:text-4xl font-black text-deep-blue-black">
                     {stat.number}
                   </span>
                   <p className="text-sm md:text-base text-dark-gray mt-1">{stat.label}</p>
@@ -71,14 +77,14 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: prefersReducedMotion ? 0 : 0.8, delay: prefersReducedMotion ? 0 : 0.2 }}
             viewport={{ once: true }}
-            className="relative h-[280px] md:h-[400px] lg:h-[550px] rounded-lg overflow-hidden shadow-2xl"
+            className="relative aspect-[1704/936] -mx-4 sm:mx-0 lg:-mr-8 xl:-mr-16"
           >
             <Image
-              src="/images/hero/fachada-frontal.png"
+              src="/images/edificio/fachada-logo-nuevo.png"
               alt="Edificio Actitud - Vista frontal"
               fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-contain"
+              sizes="(max-width: 1024px) 100vw, 60vw"
             />
           </motion.div>
         </div>

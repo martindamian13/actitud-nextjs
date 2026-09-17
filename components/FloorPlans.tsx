@@ -19,9 +19,9 @@ const distributions: Distribution[] = [
     id: 'delivery',
     name: 'Así recibís tu planta',
     description: 'Planta libre lista para tu proyecto',
-    capacity: '175 m² libres',
+    capacity: 'Hasta 190 m² libres',
     image: '/images/plantas/planta-libre.png',
-    features: ['Planta libre', '175 m²', 'Lista para equipar'],
+    features: ['Planta libre', 'Hasta 190 m²', 'Lista para equipar'],
   },
   {
     id: 'offices',
@@ -84,7 +84,7 @@ export default function FloorPlans() {
         >
           <h2 className="mb-4">IMAGINÁ LAS POSIBILIDADES<br />DE TU OFICINA</h2>
           <p className="text-lg text-dark-gray max-w-2xl mx-auto">
-            175 m² de planta libre para diseñar el espacio que tu empresa necesita
+            Hasta 190 m² de planta libre para diseñar el espacio que tu empresa necesita
           </p>
         </motion.div>
 
