@@ -71,6 +71,12 @@ export default function Contact() {
           onSubmit={handleSubmit(onSubmit)}
           className="bg-white p-6 md:p-10 rounded-xl shadow-lg"
         >
+          {/* Honeypot anti-spam: oculto para personas, los bots lo completan */}
+          <div className="absolute -left-[9999px] w-px h-px overflow-hidden" aria-hidden="true">
+            <label htmlFor="website">No completar este campo</label>
+            <input id="website" type="text" tabIndex={-1} autoComplete="off" {...register('website')} />
+          </div>
+
           <div className="grid md:grid-cols-2 gap-5 mb-5">
             <div>
               <label htmlFor="nombre" className="block text-sm font-semibold text-dark-gray mb-2">

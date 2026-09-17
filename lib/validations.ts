@@ -34,6 +34,9 @@ export const contactFormSchema = z.object({
     .string()
     .min(10, 'El mensaje debe tener al menos 10 caracteres')
     .max(1000, 'El mensaje es demasiado largo'),
+
+  // Honeypot anti-spam: campo oculto que solo completan los bots
+  website: z.string().optional(),
 });
 
 export type ContactFormData = z.infer<typeof contactFormSchema>;

@@ -3,12 +3,41 @@ import nodemailer from 'nodemailer';
 import { encode } from 'html-entities';
 import { contactFormSchema } from '@/lib/validations';
 import { ZodError } from 'zod';
+import { checkBotId } from 'botid/server';
+import { isRateLimited } from '@/lib/rateLimit';
 
 const CONTACT_EMAIL = 'contacto@edificioactitud.com.py';
 
 export async function POST(request: NextRequest) {
   try {
+    // Block automated requests (Vercel BotID)
+    const verification = await checkBotId();
+    if (verification.isBot) {
+      return NextResponse.json(
+        { error: 'No pudimos verificar el envío. Por favor intenta nuevamente o escribinos por WhatsApp.' },
+        { status: 403 }
+      );
+    }
+
+    // Limit repeated submissions from the same IP
+    const ip = request.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        { error: 'Recibimos varias consultas seguidas. Por favor espera unos minutos o escribinos por WhatsApp.' },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
+
+    // Honeypot: real users never fill the hidden "website" field.
+    // Pretend success so bots don't learn they were filtered.
+    if (typeof body?.website === 'string' && body.website.trim() !== '') {
+      return NextResponse.json(
+        { message: 'Email sent successfully' },
+        { status: 200 }
+      );
+    }
 
     // Validate with Zod schema
     const validatedData = contactFormSchema.parse(body);
