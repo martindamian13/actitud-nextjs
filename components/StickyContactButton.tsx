@@ -8,17 +8,14 @@ import throttle from 'lodash.throttle';
  * y dirige al usuario al formulario de contacto
  */
 export default function StickyContactButton() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [scrolledPast, setScrolledPast] = useState(false);
+  const [contactInView, setContactInView] = useState(false);
 
   useEffect(() => {
     // Throttle scroll handler to run at most once every 100ms
     const toggleVisibility = throttle(() => {
       // Mostrar el botón después de hacer scroll 300px
-      if (window.scrollY > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+      setScrolledPast(window.scrollY > 300);
     }, 100);
 
     window.addEventListener('scroll', toggleVisibility, { passive: true });
@@ -28,6 +25,22 @@ export default function StickyContactButton() {
       window.removeEventListener('scroll', toggleVisibility);
     };
   }, []);
+
+  useEffect(() => {
+    // Ocultar el botón mientras el formulario de contacto está en pantalla,
+    // así no tapa el botón "Enviar consulta"
+    const contactSection = document.getElementById('contacto');
+    if (!contactSection) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setContactInView(entry.isIntersecting);
+    });
+    observer.observe(contactSection);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const isVisible = scrolledPast && !contactInView;
 
   const scrollToContact = () => {
     const contactSection = document.getElementById('contacto');
