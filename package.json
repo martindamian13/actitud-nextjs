@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",
+    "@vercel/analytics": "^2.0.1",
     "framer-motion": "^12.43.0",
     "html-entities": "^2.6.0",
     "lodash.throttle": "^4.1.1",

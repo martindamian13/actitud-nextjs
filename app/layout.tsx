@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
+import { SITE_URL } from "@/lib/site";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -10,7 +12,10 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://edificioactitud.com.py'),
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: '/',
+  },
   title: {
     default: "Actitud - Edificio Corporativo en Luque, Paraguay",
     template: "%s | Actitud Edificio Corporativo",
@@ -39,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Actitud - Edificio Corporativo en Luque",
     description: "Donde la productividad y el bienestar se encuentran. Oficinas de planta libre, amenities exclusivos, ubicación estratégica.",
-    url: "https://edificioactitud.com.py",
+    url: SITE_URL,
     siteName: "Actitud Edificio Corporativo",
     locale: "es_PY",
     type: "website",
@@ -74,6 +79,7 @@ export default function RootLayout({
     <html lang="es" className={poppins.variable}>
       <body className="font-sans">
         {children}
+        <Analytics />
       </body>
     </html>
   );
