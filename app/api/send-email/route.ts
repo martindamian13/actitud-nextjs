@@ -4,6 +4,8 @@ import { encode } from 'html-entities';
 import { contactFormSchema } from '@/lib/validations';
 import { ZodError } from 'zod';
 
+const CONTACT_EMAIL = 'contacto@edificioactitud.com.py';
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -33,7 +35,7 @@ export async function POST(request: NextRequest) {
     // Email to company
     const mailOptionsToCompany = {
       from: `"${process.env.SMTP_FROM_NAME || 'Actitud Web'}" <${process.env.SMTP_FROM_EMAIL}>`,
-      to: process.env.SMTP_TO_EMAIL,
+      to: CONTACT_EMAIL,
       replyTo: email,
       subject: `Nueva consulta de ${sanitizedNombre} - Actitud Edificio Corporativo`,
       html: `

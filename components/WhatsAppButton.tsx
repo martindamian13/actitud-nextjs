@@ -1,6 +1,6 @@
 'use client';
 
-const WHATSAPP_NUMBER = '595973229057';
+const WHATSAPP_NUMBER = '595972778888';
 const WHATSAPP_MESSAGE = 'Hola, me gustaría recibir información sobre Actitud Edificio Corporativo';
 
 export default function WhatsAppButton() {

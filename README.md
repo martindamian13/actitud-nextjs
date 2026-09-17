@@ -40,7 +40,6 @@ Modern, scalable corporate landing page built with **Next.js 14**, **TypeScript*
    SMTP_PASS=your-app-password
    SMTP_FROM_EMAIL=noreply@yourdomain.com
    SMTP_FROM_NAME=Actitud - Edificio Corporativo
-   SMTP_TO_EMAIL=info@yourdomain.com
    ```
 
 4. **Run the development server:**
@@ -72,7 +71,6 @@ The contact form uses Nodemailer with SMTP to send emails. Configure your SMTP s
    SMTP_USER=youremail@gmail.com
    SMTP_PASS=your-app-password
    SMTP_FROM_EMAIL=noreply@yourdomain.com
-   SMTP_TO_EMAIL=youremail@gmail.com
    ```
 
 ### Corporate Domain Setup (Production)
@@ -84,8 +82,9 @@ SMTP_SECURE=false
 SMTP_USER=info@yourdomain.com
 SMTP_PASS=your-password
 SMTP_FROM_EMAIL=noreply@yourdomain.com
-SMTP_TO_EMAIL=info@yourdomain.com
 ```
+
+Contact form submissions are delivered to `contacto@edificioactitud.com.py` (see `app/api/send-email/route.ts`).
 
 ## 🏗️ Project Structure
 
