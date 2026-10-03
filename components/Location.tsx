@@ -5,7 +5,7 @@ import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import {
   CorporateIcon,
   AirportIcon,
-  ParkIcon,
+  // ParkIcon, // Parque Ñu Guazú (oculto por ahora, ver `locations`)
   SportsIcon,
   SoccerIcon,
   MapPinIcon,
@@ -16,15 +16,17 @@ export default function Location() {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const locations = [
-    { name: 'CIT', description: 'Centro de Innovación Tecnológica', time: '3 min', Icon: SportsIcon },
-    { name: 'Eje Corporativo', description: 'Polo empresarial', time: '10 min', Icon: CorporateIcon },
-    { name: 'Aeropuerto', description: 'Silvio Pettirossi', time: '10 min', Icon: AirportIcon },
-    { name: 'Parque Ñu Guazú', description: 'Área verde y recreativa', time: '3 min', Icon: ParkIcon },
-    { name: 'Conmebol', description: 'Sede confederación', time: '8 min', Icon: SoccerIcon },
+    { name: 'Club Internacional de Tenis', time: '3 min', Icon: SportsIcon },
+    { name: 'Eje Corporativo', time: '10 min', Icon: CorporateIcon },
+    { name: 'Aeropuerto Internacional', time: '10 min', Icon: AirportIcon },
+    // Oculto por pedido del cliente; descomentar (y el import de ParkIcon) para volver a mostrarlo.
+    // La grilla de abajo está pensada para 4 tarjetas: con 5 hay que volver a ajustar las columnas.
+    // { name: 'Parque Ñu Guazú', time: '3 min', Icon: ParkIcon },
+    { name: 'Conmebol', time: '8 min', Icon: SoccerIcon },
   ];
 
   return (
-    <section id="ubicacion" className="py-24 lg:py-32 bg-light-gray">
+    <section id="ubicacion" className="py-24 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -34,10 +36,10 @@ export default function Location() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="mb-4">UBICACIÓN ESTRATÉGICA</h2>
-          <p className="text-lg text-dark-gray max-w-2xl mx-auto">
-            En el corazón de Campo Grande, conectado con los principales puntos de la ciudad
-          </p>
+          <h2 className="text-balance">
+            Cerca de lo que<br />
+            mueve a tu empresa
+          </h2>
         </motion.div>
 
         {/* Location Cards - Horizontal */}
@@ -46,22 +48,18 @@ export default function Location() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 mb-10"
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-10"
         >
-          {locations.map((location, index) => {
+          {locations.map((location) => {
             const Icon = location.Icon;
-            const isLast = index === locations.length - 1;
             return (
               <div
                 key={location.name}
-                className={`bg-gradient-blue rounded-lg p-3 md:p-4 text-white text-center ${isLast ? 'col-span-2 md:col-span-1' : ''}`}
+                className="bg-primary-blue rounded-3xl p-4 md:p-5 text-white text-center flex flex-col items-center"
               >
-                <div className="flex justify-center mb-2">
-                  <Icon className="w-8 h-8 md:w-10 md:h-10" />
-                </div>
-                <p className="text-base md:text-xl font-bold">{location.time}</p>
-                <p className="text-sm font-semibold mt-1">{location.name}</p>
-                <p className="text-xs opacity-75 mt-0.5 hidden md:block">{location.description}</p>
+                <p className="text-xl md:text-2xl font-bold">{location.time}</p>
+                <p className="text-xs md:text-sm mt-1 min-h-[2.5em] flex items-center">{location.name}</p>
+                <Icon className="w-10 h-10 md:w-12 md:h-12 mt-3" />
               </div>
             );
           })}
