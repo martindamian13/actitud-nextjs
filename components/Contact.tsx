@@ -57,9 +57,9 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center mb-10"
         >
-          <h2 className="mb-4">CONTACTANOS</h2>
+          <h2 className="mb-4">Contáctanos</h2>
           <p className="text-lg text-dark-gray max-w-xl mx-auto">
-            Dejanos tus datos y un asesor se comunicará con usted a la brevedad
+            Dejanos tus datos y un asesor se comunicará con usted a la brevedad.
           </p>
         </motion.div>
 

@@ -1,14 +1,11 @@
 'use client';
 
-const WHATSAPP_NUMBER = '595972778888';
-const WHATSAPP_MESSAGE = 'Hola, me gustaría recibir información sobre Actitud Edificio Corporativo';
+import { WHATSAPP_URL } from '@/lib/contact';
 
 export default function WhatsAppButton() {
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
-
   return (
     <a
-      href={whatsappUrl}
+      href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 bg-whatsapp hover:bg-[#20924d] text-white rounded-full p-4 shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center group"
