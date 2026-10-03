@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 const stats: { prefix?: string; number: string; label: string }[] = [
-  { number: '6', label: 'Pisos de oficinas' },
+  { number: '6', label: 'Plantas de oficinas' },
   { prefix: 'Hasta', number: '190', label: 'm² por unidad' },
-  { number: '1', label: 'Piso de amenities' },
+  { number: '1', label: 'Planta de amenities' },
 ];
 
 export default function About() {
@@ -16,7 +16,7 @@ export default function About() {
   return (
     <section id="edificio" className="py-24 lg:py-32 bg-white overflow-x-clip">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-[2fr_3fr] gap-10 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           {/* Content */}
           <motion.div
             initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -37,8 +37,8 @@ export default function About() {
             </div>
 
             <h2 className="mb-6">
-              Espacios diseñados para<br />
-              potenciar tu empresa
+              Una presencia que<br />
+              proyecta solidez.
             </h2>
             <p className="text-lg text-dark-gray mb-10 max-w-lg">
               Oficinas de planta libre con amenities exclusivos, pensadas para empresas que buscan proyección y confort.
@@ -77,14 +77,14 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: prefersReducedMotion ? 0 : 0.8, delay: prefersReducedMotion ? 0 : 0.2 }}
             viewport={{ once: true }}
-            className="relative aspect-[1704/936] -mx-4 sm:mx-0 lg:-mr-8 xl:-mr-16"
+            className="relative aspect-[766/653] sm:mx-auto lg:mx-0 w-full max-w-xl lg:max-w-none lg:-mr-8"
           >
             <Image
-              src="/images/edificio/fachada-logo-nuevo.png"
-              alt="Edificio Actitud - Vista frontal"
+              src="/images/edificio/fachada-render.png"
+              alt="Render del edificio Actitud"
               fill
               className="object-contain"
-              sizes="(max-width: 1024px) 100vw, 60vw"
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </motion.div>
         </div>
