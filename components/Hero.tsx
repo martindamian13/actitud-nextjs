@@ -7,20 +7,12 @@ import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 const slides = [
   {
-    image: '/images/hero/fachada.png',
-    alt: 'Edificio Actitud - Fachada',
-    title: 'EDIFICIO\nCORPORATIVO',
-    subtitle: 'A 10 min del eje corporativo',
-    detail: 'Planta libre | Hasta 190 m² por unidad',
-    cta: { text: 'Conocer más', href: '#contacto' },
+    image: '/images/amenities/rooftop.png',
+    alt: 'The Rooftop - Terraza del edificio Actitud',
   },
   {
-    image: '/images/hero/salones-comerciales.png',
-    alt: 'Salones Comerciales - Planta Baja',
-    title: 'SALONES\nCOMERCIALES',
-    subtitle: 'Espacios en alquiler',
-    detail: 'Oficinas planta libre · Locales comerciales',
-    cta: { text: 'Consultar disponibilidad', href: '#contacto' },
+    image: '/images/amenities/reuniones.png',
+    alt: 'Sala de reuniones del edificio Actitud',
   },
 ];
 
@@ -41,7 +33,7 @@ export default function Hero() {
   const slide = slides[current];
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-dark-gray">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-deep-blue-black">
       {/* Background Image */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -61,41 +53,42 @@ export default function Hero() {
             sizes="100vw"
           />
           {/* Overlay for text legibility */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-black/50" />
         </motion.div>
       </AnimatePresence>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 relative z-10 w-full">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-2xl"
+      <div className="max-w-4xl mx-auto px-6 lg:px-8 py-20 relative z-10 w-full text-center">
+        <motion.div
+          initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h1 className="font-bold leading-tight mb-6 text-white text-balance text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+            Tu futuro corporativo empieza acá.
+          </h1>
+          <p className="text-base md:text-xl text-white/90 mb-12 md:mb-16 font-light max-w-2xl mx-auto text-balance">
+            Actitud nace para acompañar a empresas que quieren avanzar con confianza, flexibilidad y una mirada positiva hacia el futuro.
+          </p>
+          <a
+            href="#edificio"
+            className="inline-flex flex-col items-center gap-1 text-white text-base md:text-lg font-medium hover:text-white/80 transition-colors"
           >
-            <h1 className="font-black leading-none mb-4 text-white whitespace-pre-line text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-              {slide.title}
-            </h1>
-            <p className="text-lg md:text-2xl text-white/90 mb-2 font-light">
-              {slide.subtitle}
-            </p>
-            <p className="text-sm md:text-lg text-white/70 mb-8 md:mb-10 font-light">
-              {slide.detail}
-            </p>
-            <a
-              href={slide.cta.href}
-              className="inline-block bg-primary-blue text-white px-6 md:px-10 lg:px-12 py-3 md:py-4 lg:py-5 text-base md:text-lg font-semibold rounded hover:bg-primary-dark-blue transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+            Descubrí más
+            <svg
+              className="w-6 h-6 motion-safe:animate-bounce"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
             >
-              {slide.cta.text}
-            </a>
-          </motion.div>
-        </AnimatePresence>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+        </motion.div>
 
         {/* Slide Indicators */}
-        <div className="absolute bottom-6 md:bottom-10 left-6 lg:left-8 flex gap-3">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-3 translate-y-12 md:translate-y-8">
           {slides.map((_, index) => (
             <button
               key={index}
@@ -109,13 +102,6 @@ export default function Hero() {
             />
           ))}
         </div>
-      </div>
-
-      {/* Accent Stripe (subtle) */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 flex">
-        <div className="flex-1 bg-accent-blue"></div>
-        <div className="flex-1 bg-accent-green"></div>
-        <div className="flex-1 bg-accent-orange"></div>
       </div>
     </section>
   );
