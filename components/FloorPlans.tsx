@@ -1,178 +1,151 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
-interface Distribution {
+interface Possibility {
   id: string;
-  name: string;
-  description: string;
-  capacity: string;
+  title: string;
   image: string;
-  features: string[];
+  width: number;
+  height: number;
+  /** Side of the section where the title card sits */
+  align: 'left' | 'right';
+  /** Render with rounded corners (false for cut-out images with transparent background) */
+  rounded: boolean;
 }
 
-const distributions: Distribution[] = [
+const possibilities: Possibility[] = [
   {
-    id: 'delivery',
-    name: 'Así recibís tu planta',
-    description: 'Planta libre lista para tu proyecto',
-    capacity: 'Hasta 190 m² libres',
-    image: '/images/plantas/planta-libre.png',
-    features: ['Planta libre', 'Hasta 190 m²', 'Lista para equipar'],
-  },
-  {
-    id: 'offices',
-    name: 'Oficinas con divisiones',
-    description: 'Ejemplo con oficinas privadas y sala de reuniones',
-    capacity: 'Hasta 20 personas',
-    image: '/images/plantas/oficina-equipada.png',
-    features: ['Oficinas privadas', 'Sala de reuniones', 'Divisiones de vidrio'],
+    id: 'clinic',
+    title: 'Consultorio médico',
+    image: '/images/plantas/consultorio.png',
+    width: 1536,
+    height: 1024,
+    align: 'left',
+    rounded: true,
   },
   {
     id: 'corporate',
-    name: 'Oficina corporativa',
-    description: 'Ejemplo de recepción y área de atención al cliente',
-    capacity: 'Hasta 15 personas',
-    image: '/images/plantas/oficina-corporativa.png',
-    features: ['Recepción', 'Sala de espera', 'Imagen corporativa'],
+    title: 'Oficinas corporativas',
+    image: '/images/plantas/oficinas-isometrico.png',
+    width: 1125,
+    height: 710,
+    align: 'right',
+    rounded: false,
   },
   {
-    id: 'clinic',
-    name: 'Consultorio / Clínica',
-    description: 'Ejemplo de uso para salud, estética o bienestar',
-    capacity: 'Hasta 10 consultorios',
-    image: '/images/plantas/consultorio.png',
-    features: ['Consultorios', 'Recepción', 'Sala de espera'],
-  },
-  {
-    id: 'plan',
-    name: 'Distribución mixta',
-    description: 'Vista aérea con ejemplo de distribución combinada',
-    capacity: 'Hasta 30 personas',
-    image: '/images/plantas/planta-humanizada.png',
-    features: ['Área colaborativa', 'Oficinas privadas', 'Zonas comunes'],
+    id: 'callcenter',
+    title: 'Call center',
+    image: '/images/plantas/call-center.png',
+    width: 1536,
+    height: 1024,
+    align: 'left',
+    rounded: true,
   },
 ];
 
 export default function FloorPlans() {
   const prefersReducedMotion = usePrefersReducedMotion();
-  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % distributions.length);
+  const fadeUp = {
+    initial: prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 },
+    viewport: { once: true },
   };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + distributions.length) % distributions.length);
-  };
-
-  const currentDistribution = distributions[currentSlide];
 
   return (
     <section id="plantas" className="py-24 lg:py-32 bg-white">
-      <div className="max-w-7xl mx-auto md:px-6 lg:px-8">
-        {/* Hero Image + Copy */}
-        <motion.div
-          initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-12 px-6 md:px-0"
-        >
-          <h2 className="mb-4">IMAGINÁ LAS POSIBILIDADES<br />DE TU OFICINA</h2>
-          <p className="text-lg text-dark-gray max-w-2xl mx-auto">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+        {/* Header */}
+        <motion.h2 {...fadeUp} className="text-center mb-12 text-balance">
+          Imaginá las posibilidades de<br />
+          tu oficina.
+        </motion.h2>
+
+        {/* Floor plan */}
+        <motion.div {...fadeUp}>
+          <Image
+            src="/images/plantas/plano-planta-libre.png"
+            alt="Plano de planta libre con medidas"
+            width={2241}
+            height={686}
+            className="w-full h-auto"
+            sizes="(max-width: 1024px) 100vw, 1024px"
+          />
+          <p className="text-lg md:text-xl text-dark-gray mt-6 max-w-md">
             Hasta 190 m² de planta libre para diseñar el espacio que tu empresa necesita
           </p>
         </motion.div>
 
-        {/* Carousel */}
-        <motion.div
-          initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="md:bg-white md:p-5 md:rounded-xl md:shadow-lg"
-        >
-          {/* Image */}
-          <div className="relative h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] md:rounded-lg overflow-hidden">
+        {/* Delivery state */}
+        <motion.div {...fadeUp} className="mt-16 md:mt-24">
+          <p className="text-right text-lg md:text-xl text-dark-gray mb-4">
+            Así <strong className="text-primary-blue">recibís</strong> tu planta:
+          </p>
+          <div className="relative aspect-[16/9] md:aspect-[2.15/1] rounded-3xl overflow-hidden">
             <Image
-              src={currentDistribution.image}
-              alt={currentDistribution.name}
+              src="/images/plantas/planta-libre-entrega.png"
+              alt="Planta libre tal como se entrega"
               fill
-              className="object-cover transition-opacity duration-500"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 1024px"
             />
-
-            {/* Navigation Arrows */}
-            <button
-              onClick={prevSlide}
-              className="absolute left-2 md:left-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all hover:scale-110"
-              aria-label="Distribución anterior"
-            >
-              <svg className="w-5 h-5 md:w-6 md:h-6 text-dark-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              onClick={nextSlide}
-              className="absolute right-2 md:right-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all hover:scale-110"
-              aria-label="Siguiente distribución"
-            >
-              <svg className="w-5 h-5 md:w-6 md:h-6 text-dark-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
           </div>
-
-          {/* Info Bar */}
-          <div className="mt-4 px-4 md:px-0 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-              <h4 className="text-xl font-bold text-dark-gray">{currentDistribution.name}</h4>
-              <p className="text-sm text-medium-gray">{currentDistribution.description}</p>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {currentDistribution.features.map((feature) => (
-                <span
-                  key={feature}
-                  className="px-3 py-1 rounded-full text-xs font-medium bg-accent-green/10 text-accent-green"
-                >
-                  {feature}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Dots */}
-          <div className="flex justify-center gap-2 mt-4">
-            {distributions.map((dist, index) => (
-              <button
-                key={dist.id}
-                onClick={() => setCurrentSlide(index)}
-                className={`h-1.5 rounded-full transition-all ${
-                  index === currentSlide
-                    ? 'w-8 bg-primary-blue'
-                    : 'w-4 bg-medium-gray/30 hover:bg-medium-gray/50'
-                }`}
-                aria-label={`Ver ${dist.name}`}
-              />
-            ))}
-          </div>
-
-          {/* Disclaimer */}
-          <p className="text-center text-xs text-medium-gray mt-4 px-4 md:px-0 italic">
-            * Imágenes ilustrativas. Las plantas se entregan libres, sin equipamiento ni divisiones.
+          <p className="text-lg md:text-xl text-dark-gray mt-4">
+            Y la adaptás según <strong className="text-primary-blue">tu rubro</strong>...
           </p>
         </motion.div>
 
+        {/* Examples */}
+        <div className="mt-16 md:mt-24 space-y-16 md:space-y-24">
+          {possibilities.map((item) => (
+            <motion.div
+              key={item.id}
+              {...fadeUp}
+              className={`relative max-w-3xl ${item.align === 'right' ? 'ml-auto' : 'mr-auto'}`}
+            >
+              {/* Title card (sits behind the image) */}
+              <div
+                className={`absolute top-0 w-1/2 h-[70%] bg-primary-blue rounded-3xl p-5 md:p-8 ${
+                  item.align === 'right' ? 'right-0 text-right' : 'left-0 text-left'
+                }`}
+              >
+                <h3 className="font-sans font-light uppercase text-white text-lg md:text-2xl leading-tight">
+                  {item.title}
+                </h3>
+              </div>
+
+              <div
+                className={`relative pt-20 md:pt-28 ${
+                  item.align === 'right' ? 'pr-8 md:pr-14' : 'pl-8 md:pl-14'
+                }`}
+              >
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={item.width}
+                  height={item.height}
+                  className={`w-full h-auto ${item.rounded ? 'rounded-3xl' : ''}`}
+                  sizes="(max-width: 768px) 90vw, 768px"
+                />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <p className="text-center text-xs md:text-sm text-dark-gray mt-12 max-w-3xl mx-auto">
+          Imágenes referenciales. Las oficinas se entregan en planta libre. La distribución, adecuación, mobiliario y equipamiento quedan a cargo de cada empresa
+        </p>
+
         {/* CTA */}
-        <div className="mt-10 text-center px-6 md:px-0">
+        <div className="mt-10 text-center">
           <p className="text-dark-gray mb-4">¿Tenés una idea de distribución?</p>
           <a
             href="#contacto"
-            className="inline-block px-8 py-4 rounded-lg font-semibold text-white bg-accent-green hover:bg-accent-green/90 transition-all hover:scale-105"
+            className="inline-block px-8 py-4 rounded-lg font-semibold text-white bg-primary-blue hover:bg-primary-dark-blue transition-all hover:scale-105"
           >
             Consultanos
           </a>
