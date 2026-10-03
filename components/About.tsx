@@ -25,14 +25,14 @@ export default function About() {
             viewport={{ once: true }}
           >
             {/* Project Status Badge + Progress */}
-            <div className="inline-flex items-center gap-3 bg-accent-green/10 px-4 py-2 rounded-full mb-6">
-              <span className="w-2 h-2 bg-accent-green rounded-full animate-pulse" />
-              <span className="text-sm font-semibold uppercase tracking-wide text-accent-green">En construcción</span>
+            <div className="inline-flex items-center gap-3 bg-primary-blue/10 px-4 py-2 rounded-full mb-6">
+              <span className="w-2 h-2 bg-primary-blue rounded-full animate-pulse" />
+              <span className="text-sm font-semibold uppercase tracking-wide text-primary-blue">En construcción</span>
               <div className="flex items-center gap-2">
-                <div className="w-20 h-1.5 bg-accent-green/20 rounded-full overflow-hidden">
-                  <div className="h-full bg-accent-green rounded-full w-[30%]" />
+                <div className="w-20 h-1.5 bg-primary-blue/20 rounded-full overflow-hidden">
+                  <div className="h-full bg-primary-blue rounded-full w-[30%]" />
                 </div>
-                <span className="text-xs font-bold text-accent-green">30%</span>
+                <span className="text-xs font-bold text-primary-blue">30%</span>
               </div>
             </div>
 
@@ -62,7 +62,7 @@ export default function About() {
                   >
                     {stat.prefix ?? ' '}
                   </span>
-                  <span className="block text-2xl sm:text-3xl md:text-4xl font-black text-deep-blue-black">
+                  <span className="block text-2xl sm:text-3xl md:text-4xl font-bold font-display text-primary-blue">
                     {stat.number}
                   </span>
                   <p className="text-sm md:text-base text-dark-gray mt-1">{stat.label}</p>

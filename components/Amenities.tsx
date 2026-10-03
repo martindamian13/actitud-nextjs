@@ -53,7 +53,7 @@ export default function Amenities() {
               const Icon = amenity.Icon;
               return (
                 <div key={amenity.title} className="flex items-center gap-3">
-                  <Icon className="w-5 h-5 text-accent-green flex-shrink-0" />
+                  <Icon className="w-5 h-5 text-primary-blue flex-shrink-0" />
                   <span className="text-sm text-dark-gray">{amenity.title}</span>
                 </div>
               );

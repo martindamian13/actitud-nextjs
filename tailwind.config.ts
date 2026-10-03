@@ -9,27 +9,27 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Brand colors from manual
-        'primary-blue': '#2F80ED', // Azul Luque
-        'primary-dark-blue': '#1a4d8f', // Darker variation for contrast
-        'accent-green': '#27AE60', // Verde Chaco
-        'accent-orange': '#E67E22', // Terracota claro
-        'light-gray': '#ECF0F1', // Gris claro
+        // Brand colors from manual de marca v1.0 (2026)
+        'primary-blue': '#3E5166', // Azul acero
+        'primary-dark-blue': '#304254', // Azul acero oscuro (hover / gradientes)
+        'deep-blue-black': '#101314', // Grafito
+        'light-gray': '#F0F0F0', // Blanco de marca
         // Supporting colors
         'soft-steel-blue': '#3F5873',
         'dark-gray': '#4A4F57',
         'medium-gray': '#8C9097',
         'warm-beige': '#D6CBB8',
-        'deep-blue-black': '#0A0F14',
-        'accent-blue': '#2F80ED', // Same as primary
+        // Third-party brand color (not part of the Actitud palette)
+        'whatsapp': '#27AE60',
       },
       fontFamily: {
-        sans: ['Poppins', 'system-ui', 'Arial', 'sans-serif'],
+        sans: ['var(--font-poppins)', 'system-ui', 'Arial', 'sans-serif'],
+        display: ['var(--font-funnel)', 'var(--font-poppins)', 'system-ui', 'Arial', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-beige': 'linear-gradient(135deg, #D6CBB8 0%, #E8DED0 100%)',
-        'gradient-blue': 'linear-gradient(135deg, #2F80ED 0%, #1a4d8f 100%)', // Using brand Azul Luque
-        'gradient-dark': 'linear-gradient(135deg, #1a4d8f 0%, #0A0F14 100%)',
+        'gradient-blue': 'linear-gradient(135deg, #3E5166 0%, #304254 100%)',
+        'gradient-dark': 'linear-gradient(135deg, #304254 0%, #101314 100%)',
       },
       animation: {
         'fade-in-up': 'fadeInUp 0.6s ease-out',

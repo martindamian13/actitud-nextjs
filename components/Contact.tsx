@@ -177,7 +177,7 @@ export default function Contact() {
           </button>
 
           {submitStatus === 'success' && (
-            <p className="text-accent-green text-center mt-4 font-semibold">
+            <p className="text-primary-blue text-center mt-4 font-semibold">
               ¡Mensaje enviado exitosamente! Nos contactaremos contigo pronto.
             </p>
           )}
