@@ -10,12 +10,12 @@ type GalleryItem =
 
 const items: GalleryItem[] = [
   { type: 'video', src: '/videos/avance-de-obra-septiembre.mp4', caption: 'Avance de obra - Mes de Septiembre' },
-  { type: 'image', src: '/images/gallery/fachada-aerea.png', caption: 'Edificio Actitud - Vista aérea' },
+  { type: 'image', src: '/images/gallery/fachada.png', caption: 'Edificio Actitud - Fachada' },
   { type: 'image', src: '/images/gallery/palier.png', caption: 'Palier - Lobby de amenities' },
   { type: 'image', src: '/images/gallery/area-cafe.png', caption: 'Área de café y trabajo' },
   { type: 'image', src: '/images/gallery/estar-exterior.png', caption: 'Estar exterior - Terraza' },
   { type: 'image', src: '/images/gallery/quincho.png', caption: 'Quincho - Parrilla' },
-  { type: 'image', src: '/images/gallery/oficina-vista.png', caption: 'Oficina ejecutiva con vista' },
+  { type: 'image', src: '/images/gallery/coworking.png', caption: 'Coworking' },
 ];
 
 export default function Gallery() {
@@ -46,7 +46,7 @@ export default function Gallery() {
                   loop
                   muted
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   aria-label={item.caption}
                 />
               ) : (
