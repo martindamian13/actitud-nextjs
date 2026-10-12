@@ -14,9 +14,12 @@ const items: GalleryItem[] = [
   { type: 'video', src: '/videos/avance-de-obra-septiembre.mp4', caption: 'Avance de obra - Mes de Septiembre' },
   { type: 'image', src: '/images/gallery/fachada.png', caption: 'Edificio Actitud - Fachada' },
   { type: 'image', src: '/images/gallery/area-cafe.png', caption: 'Área de café y trabajo' },
-  { type: 'image', src: '/images/gallery/estar-exterior.png', caption: 'Estar exterior - Terraza' },
-  { type: 'image', src: '/images/gallery/quincho.png', caption: 'Quincho - Parrilla' },
   { type: 'image', src: '/images/gallery/coworking.png', caption: 'Coworking' },
+  { type: 'image', src: '/images/gallery/sala-conferencias.png', caption: 'Sala de conferencias' },
+  { type: 'image', src: '/images/gallery/sala-reuniones.png', caption: 'Sala de reuniones' },
+  { type: 'image', src: '/images/gallery/estar-exterior.png', caption: 'Estar exterior - Terraza' },
+  { type: 'image', src: '/images/gallery/estar-quincho.png', caption: 'Estar quincho' },
+  { type: 'image', src: '/images/gallery/quincho.png', caption: 'Quincho - Parrilla' },
 ];
 
 export default function Gallery() {
