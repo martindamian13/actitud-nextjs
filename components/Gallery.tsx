@@ -9,6 +9,8 @@ type GalleryItem =
   | { type: 'image'; src: string; caption: string };
 
 const items: GalleryItem[] = [
+  { type: 'video', src: '/videos/conoce-actitud.mp4', caption: 'Conocé Actitud' },
+  { type: 'video', src: '/videos/la-vision-detras-del-proyecto.mp4', caption: 'La visión detrás del proyecto' },
   { type: 'video', src: '/videos/avance-de-obra-septiembre.mp4', caption: 'Avance de obra - Mes de Septiembre' },
   { type: 'image', src: '/images/gallery/fachada.png', caption: 'Edificio Actitud - Fachada' },
   { type: 'image', src: '/images/gallery/palier.png', caption: 'Palier - Lobby de amenities' },
