@@ -13,7 +13,6 @@ const items: GalleryItem[] = [
   { type: 'video', src: '/videos/la-vision-detras-del-proyecto.mp4', caption: 'La visión detrás del proyecto' },
   { type: 'video', src: '/videos/avance-de-obra-septiembre.mp4', caption: 'Avance de obra - Mes de Septiembre' },
   { type: 'image', src: '/images/gallery/fachada.png', caption: 'Edificio Actitud - Fachada' },
-  { type: 'image', src: '/images/gallery/palier.png', caption: 'Palier - Lobby de amenities' },
   { type: 'image', src: '/images/gallery/area-cafe.png', caption: 'Área de café y trabajo' },
   { type: 'image', src: '/images/gallery/estar-exterior.png', caption: 'Estar exterior - Terraza' },
   { type: 'image', src: '/images/gallery/quincho.png', caption: 'Quincho - Parrilla' },
