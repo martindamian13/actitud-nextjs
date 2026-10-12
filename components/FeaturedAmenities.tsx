@@ -148,13 +148,13 @@ export default function FeaturedAmenities() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }}
               viewport={{ once: true }}
-              className="relative h-[200px] sm:h-[240px] md:h-[280px] lg:h-[320px] rounded-xl overflow-hidden group cursor-default"
+              className="relative h-[200px] sm:h-[240px] md:h-[280px] lg:h-[320px] rounded-xl overflow-hidden cursor-default"
             >
               <Image
                 src={amenity.image}
                 alt={amenity.title}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               {/* Overlay */}
